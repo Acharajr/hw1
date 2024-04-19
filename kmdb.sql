@@ -115,8 +115,9 @@
 
 DROP TABLE IF EXISTS movies
 DROP TABLE IF EXISTS studio
-DROP TABLE IF EXISTS actors
-DROP TABLE IF EXISTS moviesactors_&_actresses
+DROP TABLE IF EXISTS actors_and_actresses
+DROP TABLE IF EXISTS movieactors_and_actresses
+;
 
 
 -- Create new tables, according to your domain model
@@ -135,33 +136,33 @@ CREATE TABLE studio (
   name TEXT
 );
 
-CREATE TABLE actors_&_actresses (
+CREATE TABLE actors_and_actresses (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   first_name TEXT,
   last_name TEXT
 );
 
-CREATE TABLE movieactors_&_actresses (
+CREATE TABLE movieactors_and_actresses (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   movie_id INTEGER,
-  actors_&_actresses_id INTEGER
+  actors_and_actresses_id INTEGER
 );
 
 -- Insert data into your database that reflects the sample data shown above
 -- Use hard-coded foreign key IDs when necessary
 -- TODO!
 
-INSERT INTO movies (title, year_dropped, mpaa_rating, Studio_id) VALUES
-("Batman Begins","2005","PG-13","1")
-("The Dark Knight","2008","PG-13","1")
+INSERT INTO movies(title, year_dropped, mpaa_rating, Studio_id) VALUES
+("Batman Begins","2005","PG-13","1"),
+("The Dark Knight","2008","PG-13","1"),
 ("The Dark Knight Rises","2012","PG-13","1")
 ;
 
-INSERT INTO studios (name) VALUES
+INSERT INTO studio (name) VALUES
 ("Warner Bros.")
 ;
 
-INSERT INTO actors_&_actresses ("first_name", "last_name") VALUES
+INSERT INTO actors_and_actresses ("first_name", "last_name") VALUES
 ("Christian", "Bale"),
 ("Michael", "Caine"),
 ("Liam", "Neeson"),
@@ -175,7 +176,7 @@ INSERT INTO actors_&_actresses ("first_name", "last_name") VALUES
 ("Anne", "Hathaway")
 ;
 
-INSERT INTO movieactors_&_actresses (movie_id, actors&actresses_id) VALUES
+INSERT INTO movieactors_and_actresses (movie_id, actors_and_actresses_id) VALUES
 
 
 -- Prints a header for the movies output
@@ -195,8 +196,9 @@ FROM Movies
 .print "========"
 .print ""
 
-SELECT title, year_dropped, mpaa_rating, studio
+SELECT  title, actors_and_actresses, movieactors_and_actresses
 FROM Movies
+Where
 
 -- The SQL statement for the cast output
 -- TODO!
