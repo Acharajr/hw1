@@ -113,11 +113,10 @@
 -- Drop existing tables, so you'll start fresh each time this script is run.
 -- TODO!
 
-DROP TABLE IF EXISTS movies
-DROP TABLE IF EXISTS studio
-DROP TABLE IF EXISTS actors_and_actresses
-DROP TABLE IF EXISTS movieactors_and_actresses
-;
+DROP TABLE movies;
+DROP TABLE studio;
+DROP TABLE actors_and_actresses;
+DROP TABLE movieactors_and_actresses;
 
 
 -- Create new tables, according to your domain model
@@ -152,13 +151,32 @@ CREATE TABLE movieactors_and_actresses (
 -- Use hard-coded foreign key IDs when necessary
 -- TODO!
 
-INSERT INTO movies(title, year_dropped, mpaa_rating, Studio_id) VALUES
-("Batman Begins","2005","PG-13","1"),
-("The Dark Knight","2008","PG-13","1"),
-("The Dark Knight Rises","2012","PG-13","1")
+INSERT INTO movies(title,
+year_dropped,
+mpaa_rating,
+Studio_id) 
+VALUES
+("Batman Begins","2005","PG-13",1)
 ;
 
-INSERT INTO studio (name) VALUES
+INSERT INTO movies(title, 
+year_dropped, 
+mpaa_rating, 
+Studio_id)
+VALUES
+("The Dark Knight ","2008","PG-13",1)
+;
+
+INSERT INTO movies(title, 
+year_dropped, 
+mpaa_rating, 
+Studio_id)
+VALUES
+("The Dark Knight rises ","2012","PG-13",1)
+;
+
+INSERT INTO studio (name) 
+VALUES
 ("Warner Bros.")
 ;
 
